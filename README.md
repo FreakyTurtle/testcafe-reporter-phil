@@ -8,7 +8,7 @@ Phil outputs a semi-styled html report to help track documentation and for use i
 Why is it called phil? As an homage to Bill Murray's reporter character in the film groundhog day.
 
 <p align="center">
-    <img src="https://github.com/FreakyTurtle/tescafe-reporter-phil/blob/master/media/preview.png" alt="preview" />
+    <img src="https://github.com/FreakyTurtle/tescafe-reporter-phil/blob/master/media/preview.png?raw=true" alt="preview" />
 </p>
 
 ## Install
