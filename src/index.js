@@ -5,7 +5,6 @@ export default function () {
         afterErrList: false, 
         uaList:       null,
         report:       '',
-        // report:       '<html><head><!-- Latest compiled and minified CSS --><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><!-- Optional theme --><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"crossorigin="anonymous"></head><body>', 
         table:        '', 
         tableReports: '',
         testCount:    0,
@@ -18,7 +17,7 @@ export default function () {
             this.testCount = testCount;
         },
 
-        reportFixtureStart (name /*, path */) {
+        reportFixtureStart (name) {
             this.currentFixtureName = name;
         },
 
@@ -91,14 +90,10 @@ export default function () {
             const durationMs  = endTime - this.startTime;
             const durationStr = this.moment.duration(durationMs).format('h[h] mm[m] ss[s]');
             const failed = this.testCount - passed;
-            // let footer = passed === this.testCount ?
-            //      `${this.testCount} passed` :
-            //      `${this.testCount - passed}/${this.testCount} failed`;
-                 
-            // footer += ` (Duration: ${durationStr})`;
+            
             
             //Opening html 
-            this.write('<html>')
+            this.write('<html lang="en">')
                 .newline()
                 .setIndent(1)
                 .write('<head>')
@@ -111,24 +106,31 @@ export default function () {
                 .setIndent(1)
                 .write('</head>')
                 .newline()
-                .write('</body>');
+                .write('<body>')
+                .newline()
+                .write('<div class="container">')
+                .newline();
                 
             //Now add a summary 
-            this.write('<h2>TestCafe Test Summary </h2>')
+            this.write('<h1 class="text-primary">TestCafe Test Summary</h1>')
                 .newline()
                 .write('<br>')
                 .newline()
-                .write('<h3>Summary</h3>')
+                .write('<div class="bg-primary" style="padding:15px">')
                 .newline()
-                .write(`<p>Start Time: ${this.startTime}</p>`)
+                .write('<h3>Summary</h3><br>')
                 .newline()
-                .write(`<p>Browsers: ${this.uaList}</p>`)
+                .write(`<p class="lead">Start Time: ${this.startTime}</p>`)
                 .newline()
-                .write(`<p>Duration: ${durationStr}</p>`)
+                .write(`<p class="lead">Browsers: ${this.uaList}</p>`)
                 .newline()
-                .write(`<p>Tests Failed: ${failed} out of ${this.testCount}</p>`)
+                .write(`<p class="lead">Duration: ${durationStr}</p>`)
                 .newline()
-                .write(`<p>Tests Skipped: ${this.skipped}</p>`)
+                .write(`<p class="lead">Tests Failed: ${failed} out of ${this.testCount}</p>`)
+                .newline()
+                .write(`<p class="lead">Tests Skipped: ${this.skipped}</p>`)
+                .newline()
+                .write('</div><br>')
                 .newline();
             
             //Summary table
@@ -156,7 +158,7 @@ export default function () {
                 .newline();
             
             //closing html
-            this.write('</body></html>');
+            this.write('</div></body></html>');
         }
     };
 }
