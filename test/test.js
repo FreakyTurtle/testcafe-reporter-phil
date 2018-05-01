@@ -5,7 +5,7 @@ var createReport     = require('./utils/create-report');
 
 it('Should produce report with colors', function () {
     var report   = createReport(true);
-    var expected = JSON.parse(read('./data/report-with-colors.json'));
+    var expected = read('./data/report-with-colors.html');
 
     report   = normalizeNewline(report).trim();
     expected = normalizeNewline(expected).trim();
