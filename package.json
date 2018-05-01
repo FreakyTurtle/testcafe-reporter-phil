@@ -1,6 +1,6 @@
 {
   "name": "testcafe-reporter-phil",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "phil TestCafe reporter plugin.",
   "repository": "https://github.com/FreakyTurtle/testcafe-reporter-phil",
   "author": {
